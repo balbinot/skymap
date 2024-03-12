@@ -12,6 +12,7 @@ del get_versions
 from skymap.core import Skymap, McBrydeSkymap, OrthoSkymap
 from skymap.survey import SurveySkymap,SurveyMcBryde,SurveyOrtho
 from skymap.survey import DESSkymap, BlissSkymap
+from skymap.survey import EuclidNorthSkymap, EuclidSouthSkymap
 
 import warnings
 from matplotlib.cbook import MatplotlibDeprecationWarning

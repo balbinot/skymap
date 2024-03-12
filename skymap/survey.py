@@ -326,6 +326,41 @@ class SurveyZoom(SurveyMcBryde):
         self.axisartist = ax
         return fig,ax
 
+class EuclidSouthSkymapMcBryde(SurveyZoom):
+    """Class for plotting a zoom on DES. This is relatively inflexible."""
+    # RA, DEC frame limits
+    FRAME = [[-50,-50,90,90],[10,-75,10,-75]]
+    FIGSIZE=(8,5)
+
+    def __init__(self, *args, **kwargs):
+        defaults = dict(lon_0=0,celestial=True)
+        setdefaults(kwargs,defaults)
+        super(EuclidSouthSkymap,self).__init__(*args, **kwargs)
+
+    def create_tick_formatter(self):
+        return ZoomFormatterDES()
+        #return ZoomFormatter180()
+
+EuclidSouthSkymap = EuclidSouthSkymapMcBryde
+
+class EuclidNorthSkymapMcBryde(SurveyZoom):
+    """Class for plotting a zoom on DES. This is relatively inflexible."""
+    # RA, DEC frame limits
+    FRAME = [[0, 0, 110, 100],[75, -10, 75, -10]]
+    #FRAME = [[90, 90, 350, 350],[-10, 75, -10, 75]]
+    FIGSIZE=(8,5)
+
+    def __init__(self, *args, **kwargs):
+        defaults = dict(lon_0=110,celestial=True)
+        setdefaults(kwargs,defaults)
+        super(EuclidNorthSkymap,self).__init__(*args, **kwargs)
+
+    def create_tick_formatter(self):
+        return ZoomFormatterDES()
+        #return ZoomFormatter360()
+
+EuclidNorthSkymap = EuclidNorthSkymapMcBryde
+
 class DESSkymapMcBryde(SurveyZoom):
     """Class for plotting a zoom on DES. This is relatively inflexible."""
     # RA, DEC frame limits
